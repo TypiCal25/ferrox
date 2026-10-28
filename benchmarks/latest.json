@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-28",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "evm": "Prague (compiler targets Cancun)",
+  "optimizerRuns": 1000000,
+  "checks": 37052,
+  "measurements": {
+    "challengeReference": {
+      "transactionGas": 68560,
+      "executionGas": 46984
+    },
+    "challengeOptimized": {
+      "transactionGas": 43439,
+      "executionGas": 21863
+    },
+    "wots": {
+      "transactionGas": 155554,
+      "executionGas": 85506
+    },
+    "wots16": {
+      "transactionGas": 161764,
+      "executionGas": 103312
+    },
+    "mldsa": {
+      "transactionGas": 775146,
+      "executionGas": 714478
+    },
+    "falcon": {
+      "transactionGas": 258600,
+      "executionGas": 221992
+    },
+    "mldsaUpstreamKeccak": {
+      "transactionGas": 896389,
+      "executionGas": 834881
+    },
+    "mldsaUpstreamStandard": {
+      "transactionGas": 1248061,
+      "executionGas": 1186529
+    },
+    "falconUpstreamStandard": {
+      "transactionGas": 688565,
+      "executionGas": 635425
+    },
+    "falconUpstreamKeccak": {
+      "transactionGas": 1482244,
+      "executionGas": 1428516
+    },
+    "multisig3of3": {
+      "transactionGas": 1240208,
+      "executionGas": 1115024
+    }
+  },
+  "deployments": {
+    "wallet": 2508682,
+    "hashVerifier": 284029,
+    "mlVerifier": 3823338,
+    "falconVerifier": 3725778,
+    "mlKey": 8779908,
+    "baselineMLKey": 4836510,
+    "falconKey": 281092
+  },
+  "notes": [
+    "Local EthereumJS actual signed transactions; includes base gas, calldata and Prague calldata floor.",
+    "Custom schemes are experimental and not standard ML-DSA/Falcon.",
+    "Gas depends on signature values; these are single-vector samples, not worst-case bounds.",
+    "Key registration/deployment is separate from per-transaction verification."
+  ]
+}

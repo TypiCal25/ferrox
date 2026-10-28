@@ -1,0 +1,17 @@
+node_modules/
+artifacts/
+*.log
+.env
+*.key.json
+*.key.json.*
+__pycache__/
+out/
+cache/
+tmp/
+.DS_Store
+.env.*
+!.env.example
+*.aux
+*.out
+*.synctex.gz
+*.lock.tmp

@@ -1,0 +1,11 @@
+import {ml_dsa44} from '@noble/post-quantum/ml-dsa.js';
+import {mlKey,packWords} from '../scripts/keys.mjs';
+import {createEVM} from './evm.mjs';
+const evm=await createEVM();
+const key=mlKey(ml_dsa44.keygen(new Uint8Array(32).fill(7)).publicKey);
+const data=await evm.deploy('KeyData',[key.upstream]);
+const p=await evm.deploy('NTTTestHarness'),r=await evm.deploy('ReferenceProfile');
+const z=Array.from({length:4},(_,j)=>packWords(Array.from({length:256},(_,i)=>(j+i*98239)%8380417),64));
+const c=packWords(Array.from({length:256},(_,i)=>i%8380417),64);
+console.log('wide-key: forward, matvec, inverse', [...(await evm.call(p,'profile',[key.wide,z,c]))[0]].map(Number));
+console.log('reference: forward, matvec, inverse', [...(await evm.call(r,'profile',[data.address,z,c]))[0]].map(Number));
